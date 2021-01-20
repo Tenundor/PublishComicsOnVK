@@ -11,8 +11,8 @@ def download_file(file_url, file_path):
 
 
 def find_filename_in_url(url):
-    filename_start_index = url.rindex("/")
-    return url[filename_start_index + 1:]
+    filename_start_index = url.rindex("/") + 1
+    return url[filename_start_index:]
 
 
 def fetch_xkcd_comic(comic_id):
@@ -28,4 +28,4 @@ def fetch_xkcd_comic(comic_id):
 
 
 if __name__ == "__main__":
-    fetch_xkcd_comic(150)
+    fetch_xkcd_comic(155)
