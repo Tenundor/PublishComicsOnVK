@@ -1,5 +1,8 @@
+import os
 from pathlib import Path
 import requests
+
+from dotenv import load_dotenv
 
 
 def download_file(file_url, file_path):
@@ -27,5 +30,23 @@ def fetch_xkcd_comic(comic_id):
     print(comic_comment)
 
 
+def get_test_vk_response(access_token):
+    method_name = "groups.get"
+    vk_api_url = f"https://api.vk.com/method/{method_name}"
+    request_parameters = {
+        "access_token": access_token,
+        "v": "5.126",
+        "extended": 1,
+        "fields": "name",
+    }
+    vk_groups_response = requests.get(vk_api_url, params=request_parameters)
+    vk_groups_response.raise_for_status()
+    return vk_groups_response.json()
+
+
 if __name__ == "__main__":
-    fetch_xkcd_comic(155)
+    load_dotenv()
+    vk_access_token = os.getenv("VK_ACCESS_TOKEN")
+    print(get_test_vk_response(vk_access_token))
+
+    # fetch_xkcd_comic(355)
