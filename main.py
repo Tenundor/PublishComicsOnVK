@@ -1,7 +1,8 @@
 import os
 from pathlib import Path
-import requests
+from random import randint
 
+import requests
 from dotenv import load_dotenv
 
 
@@ -134,10 +135,11 @@ def main():
     load_dotenv()
     vk_access_token = os.getenv("VK_ACCESS_TOKEN")
     vk_group_id = os.getenv("VK_GROUP_ID")
-    xkcd_comic_id = 1
+    number_of_comics = get_number_xkcd_comics()
+    random_comic_id = randint(1, number_of_comics)
     api_version = "5.126"
     response = post_comic_on_vk_wall(vk_access_token, api_version, vk_group_id,
-                                     xkcd_comic_id)
+                                     random_comic_id)
     print(response)
 
 
