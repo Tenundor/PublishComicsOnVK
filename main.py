@@ -67,7 +67,7 @@ def send_vk_post_request(access_token, api_version, request_url,
     response_content = response.json()
     error = response_content.get("error")
     if error:
-        raise requests.exceptions.HTTPError(error)
+        raise requests.exceptions.HTTPError(error["error_msg"])
     return response_content
 
 
