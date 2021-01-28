@@ -1,11 +1,11 @@
 import os
 from random import randint
 
-import requests
 from dotenv import load_dotenv
+import requests
 
-from xkcd_utils import get_number_xkcd_comics
 from vk_utils import post_comic_on_vk_wall
+from xkcd_utils import get_number_xkcd_comics
 
 
 def main():
