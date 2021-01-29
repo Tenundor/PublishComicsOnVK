@@ -3,10 +3,6 @@ import os
 import requests
 
 
-def prepare_vk_api_url(method_name):
-    return f"https://api.vk.com/method/{method_name}"
-
-
 def send_vk_post_request(access_token, api_version, request_url,
                          file_type="photo", file=None, **payload):
     file_to_send = None
@@ -27,7 +23,7 @@ def send_vk_post_request(access_token, api_version, request_url,
 
 
 def get_vk_url_to_upload_photo(access_token, api_version, group_id):
-    api_url = prepare_vk_api_url("photos.getWallUploadServer")
+    api_url = "https://api.vk.com/method/photos.getWallUploadServer"
     response = send_vk_post_request(access_token, api_version, api_url,
                                     group_id=group_id)
     return response["response"]["upload_url"]
@@ -43,8 +39,7 @@ def upload_photo_to_vk(access_token, api_version, url_to_upload, filename):
 def save_vk_wall_photo(access_token, api_version, upload_api_response,
                        group_id=None, **save_parameters):
     save_parameters.update(upload_api_response)
-    method_name = "photos.saveWallPhoto"
-    api_url = prepare_vk_api_url(method_name)
+    api_url = "https://api.vk.com/method/photos.saveWallPhoto"
     response = send_vk_post_request(access_token, api_version, api_url,
                                     group_id=group_id, **save_parameters)
     return response
@@ -54,8 +49,7 @@ def post_photo_on_wall(access_token, api_version, photo_id, photo_owner_id,
                        wall_owner_id, message="", friends_only=0, from_group=1,
                        **post_parameters):
     attachment = f"photo{photo_owner_id}_{photo_id}"
-    method_name = "wall.post"
-    api_url = prepare_vk_api_url(method_name)
+    api_url = "https://api.vk.com/method/wall.post"
     post_parameters.update({
         "owner_id": wall_owner_id,
         "friends_only": friends_only,
