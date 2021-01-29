@@ -1,6 +1,6 @@
 # Публикация комиксов xkcd на стене ВКонтакте
 
-Программа скачивает и публикует на стене сообщества ВКонтакте случайный комикс Randall Munroe с сайта [xkcd.com](xkcd.com).
+Программа скачивает и публикует на стене сообщества ВКонтакте случайный комикс Randall Munroe с сайта [xkcd.com](https://xkcd.com/).
 
 ## Установка и запуск
 
@@ -30,7 +30,7 @@ https://vk.com/editapp?id=7777777
 ```
 https://oauth.vk.com/authorize?client_id={client_id}&display=page&scope=photos,groups,wall&response_type=token&v=5.126
 ```
-где {client_id} - значение client_id вашего приложения.
+где `{client_id}` - значение client_id вашего приложения.
 
 - В папке с программой создайте файл `.env` и добавьте в него строку с ключом доступа пользователя:
 ```
