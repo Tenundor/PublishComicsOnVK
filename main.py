@@ -6,6 +6,7 @@ import requests
 
 from vk_utils import post_comic_on_vk_wall
 from xkcd_utils import get_number_xkcd_comics
+from xkcd_utils import fetch_xkcd_comic
 
 
 def main():
@@ -16,8 +17,8 @@ def main():
     random_comic_id = randint(1, number_of_comics)
     api_version = "5.126"
     try:
-        post_comic_on_vk_wall(vk_access_token, api_version, vk_group_id,
-                              random_comic_id)
+        comic = fetch_xkcd_comic(random_comic_id)
+        post_comic_on_vk_wall(vk_access_token, api_version, vk_group_id, comic)
     except requests.exceptions.HTTPError as error:
         print(error)
 

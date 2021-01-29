@@ -2,8 +2,6 @@ import os
 
 import requests
 
-from xkcd_utils import fetch_xkcd_comic
-
 
 def prepare_vk_api_url(method_name):
     return f"https://api.vk.com/method/{method_name}"
@@ -71,8 +69,7 @@ def post_photo_on_wall(access_token, api_version, photo_id, photo_owner_id,
     return response
 
 
-def post_comic_on_vk_wall(access_token, api_version, group_id, comic_id):
-    comic = fetch_xkcd_comic(comic_id)
+def post_comic_on_vk_wall(access_token, api_version, group_id, comic):
     url_to_upload = get_vk_url_to_upload_photo(access_token, api_version,
                                                group_id)
     api_response_upload = upload_photo_to_vk(access_token, api_version,
