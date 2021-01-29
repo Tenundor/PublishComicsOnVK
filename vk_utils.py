@@ -19,7 +19,6 @@ def send_vk_post_request(access_token, api_version, request_url,
         "v": api_version,
     })
     response = requests.post(request_url, data=payload, files=file_to_send)
-    response.raise_for_status()
     response_content = response.json()
     error = response_content.get("error")
     if error:
