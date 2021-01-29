@@ -3,12 +3,11 @@ from pathlib import Path
 import requests
 
 
-def download_file(file_url, file_path):
-    file_path = Path(file_path)
-    Path(file_path.parent).mkdir(parents=True, exist_ok=True)
+def download_file(file_url, filename):
+    filename = Path(filename)
     response = requests.get(file_url, verify=False)
     response.raise_for_status()
-    file_path.write_bytes(response.content)
+    filename.write_bytes(response.content)
 
 
 def find_filename_in_url(url):
