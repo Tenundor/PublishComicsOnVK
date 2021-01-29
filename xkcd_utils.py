@@ -32,8 +32,3 @@ def fetch_xkcd_comic(comic_id):
         "filename": image_name,
         "comment": comic_comment,
     }
-
-
-def get_number_xkcd_comics():
-    comic = request_xkcd_comic()
-    return comic["num"]
