@@ -15,12 +15,13 @@ def main():
     number_of_comics = request_xkcd_comic()["num"]
     random_comic_id = randint(1, number_of_comics)
     api_version = "5.126"
+    comic = fetch_xkcd_comic(random_comic_id)
     try:
-        comic = fetch_xkcd_comic(random_comic_id)
-        post_comic_on_vk_wall(vk_access_token, api_version, vk_group_id,
-                              comic)
+        post_comic_on_vk_wall(vk_access_token, api_version, vk_group_id, comic)
     except requests.exceptions.HTTPError as error:
         print(error)
+    finally:
+        os.remove(comic["filename"])
 
 
 if __name__ == "__main__":

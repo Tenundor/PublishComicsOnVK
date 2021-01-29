@@ -76,6 +76,5 @@ def post_comic_on_vk_wall(access_token, api_version, group_id, comic):
     api_response_post = post_photo_on_wall(access_token, api_version,
                                            photo_id, photo_owner_id,
                                            group_owner_id, comic["comment"])
-    os.remove(comic["filename"])
     return api_response_post
 
