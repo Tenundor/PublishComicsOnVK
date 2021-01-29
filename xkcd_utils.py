@@ -15,12 +15,8 @@ def find_filename_in_url(url):
     return url[filename_start_index:]
 
 
-def request_xkcd_comic(comic_id=None):
-    comics_host = "http://xkcd.com"
-    if comic_id:
-        comic_url = f"{comics_host}/{comic_id}/info.0.json"
-    else:
-        comic_url = f"{comics_host}/info.0.json"
+def request_xkcd_comic(comic_id=""):
+    comic_url = f"http://xkcd.com/{comic_id}/info.0.json"
     comic_response = requests.get(comic_url)
     comic_response.raise_for_status()
     return comic_response.json()
